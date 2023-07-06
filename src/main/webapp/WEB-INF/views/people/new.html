@@ -8,11 +8,11 @@
 <body>
 
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
-    <label for="fullName">Введите ФИО: </label>
+    <label for="fullName">Enter full name: </label>
     <input type="text" th:field="*{fullName}" id="fullName"/>
     <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Full Name Error</div>
     <br/>
-    <label for="yearOfBirth">Введите год рождения: </label>
+    <label for="yearOfBirth">Enter the year of birth: </label>
     <input type="text" th:field="*{yearOfBirth}" id="yearOfBirth"/>
     <div style="color:red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Year of birth Error</div>
     <br/>

@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Show</title>
 </head>
 <body>
 <p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">VALUE</p>
 
 <div th:if="${books.isEmpty()}">
-  <p>Человек пока не взял ни одной книги</p>
+  <p>The man has not yet taken a single book</p>
   <hr/>
 </div>
 
@@ -18,17 +18,24 @@
   <b>Книги:</b>
   <br/>
   <table th:each="book : ${books}">
-    <tr th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</tr>
+    <tr>
+      <td>
+                <span th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}"
+                      th:style="${book.isExpired()} ? 'color: red' : 'color: black'">
+                    book
+                </span>
+      </td>
+    </tr>
   </table>
   <hr/>
 </div>
 
 <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
-  <input type="submit" value="Редактировать"/>
+  <input type="submit" value="Edit"/>
 </form>
 
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-  <input type="submit" value="Удалить"/>
+  <input type="submit" value="Delete"/>
 </form>
 
 </body>
